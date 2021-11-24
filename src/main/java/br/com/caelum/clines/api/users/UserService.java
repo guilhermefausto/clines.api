@@ -32,7 +32,7 @@ public class UserService {
 	}
 
 	public Long createUserBy(@Valid UserForm form) {
-	    repository.findByEmail(form.getEmail()).ifPresent(aircraft -> {
+	    repository.findByEmail(form.getEmail()).ifPresent(user -> {
 	            throw new ResourceAlreadyExistsException("User already exists");
 	    });
 	
