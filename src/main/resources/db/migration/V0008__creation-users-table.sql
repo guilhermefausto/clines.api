@@ -1,0 +1,8 @@
+CREATE TABLE users (
+    id BIGINT AUTO_INCREMENT,
+    name VARCHAR(150)NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR(255)NOT NULL,
+
+    CONSTRAINT pk_users PRIMARY KEY(id)
+);
