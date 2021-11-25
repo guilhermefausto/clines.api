@@ -8,7 +8,6 @@ import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
 
-import br.com.caelum.clines.shared.exceptions.AircraftModelNotFoundException;
 import br.com.caelum.clines.shared.exceptions.ResourceAlreadyExistsException;
 import br.com.caelum.clines.shared.exceptions.ResourceNotFoundException;
 import lombok.AllArgsConstructor;

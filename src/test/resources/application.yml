@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/clines_test
+    driverClassName: org.mariadb.jdbc.Driver
+    username: cursos
+    password: cursos
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: validate
+      show-sql: true
+
+cors:
+  allowed:
+    origins: http://localhost:3000
+    all-methods: true
+    all-headers: true
+    send-credentials: true

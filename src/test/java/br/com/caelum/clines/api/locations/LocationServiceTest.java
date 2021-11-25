@@ -52,7 +52,7 @@ class LocationServiceTest {
     @Test
     public void shouldReturnLocation() {
         var location = new Location(Country.BR, "São Paulo", "Poá");
-
+        
         when(repository.findById(1L))
                 .thenReturn(Optional.of(location));
 

@@ -1,8 +1,17 @@
 package br.com.caelum.clines.api.locations;
 
-import br.com.caelum.clines.shared.domain.Country;
-import br.com.caelum.clines.shared.domain.Location;
-import com.google.gson.Gson;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureTestEntityManager;
@@ -15,14 +24,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import javax.transaction.Transactional;
-import java.util.Collections;
-import java.util.List;
+import com.google.gson.Gson;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import br.com.caelum.clines.shared.domain.Country;
+import br.com.caelum.clines.shared.domain.Location;
 
 @SpringBootTest
 @TestPropertySource(properties = {"DB_NAME=clines_test","spring.jpa.hibernate.ddlAuto:create-drop"})
@@ -90,11 +95,11 @@ class LocationControllerIntegrationTest {
 
     @Test
     public void listAllLocationsShouldReturnAnEmptyList() throws Exception {
-        List<LocationView> locations = Collections.emptyList();
-
+        //List<LocationView> locations = Collections.emptyList();
+        List<LocationView> locations2 = new ArrayList<LocationView>();
         mockMvc.perform(MockMvcRequestBuilders.get("/location"))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content()
-                        .json(gson.toJson(locations)));
+                        .json(gson.toJson(locations2)));
     }
 }
