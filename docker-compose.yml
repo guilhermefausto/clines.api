@@ -1,0 +1,23 @@
+version: '3'
+services:
+  database:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: cursos
+      MYSQL_DATABASE: clines
+      MYSQL_USER: cursos
+      MYSQL_PASSWORD: cursos
+    volumes:
+      - ${PWD}/db-volume:/var/lib/mysql
+
+  api:
+    image: guilhermefausto/clines-api
+    environment:
+      DB_HOST: database
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "database"
+
+volumes:
+  db-volume:
