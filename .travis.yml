@@ -1,0 +1,31 @@
+cache:
+  directories:
+  - "$HOME/.m2"
+
+language: java
+
+services:
+  - docker
+
+stages:
+  - test
+  - deploy
+
+install: skip
+
+jobs:
+  include:
+  - stage: test
+    name: "testing Application"
+    services: mariadb
+    before_script:
+      - mysql -c 'CREATE DATABASE clines_test;' -U root
+    script:
+      - make test
+
+  - stage: deploy
+    name: "Deploy Application to Production"
+    services: mariadb
+    
+    script:
+      - make deploy
